@@ -5,7 +5,7 @@ USE SalesManagement;
 CREATE TABLE Customers (
     CustomerID INT AUTO_INCREMENT PRIMARY KEY,
     CustomerName VARCHAR(255) NOT NULL,
-    Email VARCHAR(255) UNIQUE,
+    Email VARCHAR(255) ,
     Phone VARCHAR(20),
     Address VARCHAR(255)
 );
@@ -40,7 +40,7 @@ ALTER TABLE Orders ADD Note TEXT;
 ALTER TABLE Products CHANGE Manufacturer NhaSanXuat VARCHAR(100);
 
 INSERT INTO Customers (CustomerName, Email, Phone, Address) VALUES 
-('Lê Đức Anh', 'ducanh@gmail.com', '098765432', 'Thủ Đức'),
+('Lê Đức Anh', 'ducanh@gmail.com', '098765432', 'TPHCM'),
 ('Nguyễn Văn A', 'vana@gmail.com', NULL, 'Hà Nội'),
 ('Trần Thị B', 'thib@gmail.com', '0912345678', 'TPHCM'),
 ('Phạm Minh C', 'minhc@gmail.com', NULL, 'Đà Nẵng'),
@@ -54,11 +54,11 @@ INSERT INTO Products (ProductName, NhaSanXuat, Price) VALUES
 ('iPad Pro M2', 'Apple', 21000000);
 
 INSERT INTO Orders (OrderCode, CustomerID, OrderDate) VALUES 
-('DH001', 1, '2026-04-01'),
-('DH002', 3, '2026-04-02'),
-('DH003', 1, '2026-04-03'),
-('DH004', 5, '2026-04-04'),
-('DH005', 2, '2026-04-05');
+('OR001', 1, '2026-04-01'),
+('OR002', 3, '2026-04-02'),
+('OR003', 1, '2026-04-03'),
+('OR004', 5, '2026-04-04'),
+('OR005', 2, '2026-04-05');
 
 INSERT INTO Order_Detail (OrderID, ProductID, Quantity, UnitPrice) VALUES 
 (1, 3, 1, 18000000),
@@ -87,7 +87,7 @@ SELECT o.OrderCode, p.ProductName, od.Quantity, od.UnitPrice, (od.Quantity * od.
 FROM Order_Detail od
 JOIN Orders o ON od.OrderID = o.OrderID
 JOIN Products p ON od.ProductID = p.ProductID
-WHERE o.OrderCode = 'DH001';
+WHERE o.OrderCode = 'OR001';
 
 SELECT o.OrderCode, o.OrderDate 
 FROM Orders o
